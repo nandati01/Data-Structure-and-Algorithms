@@ -1,6 +1,7 @@
 # Introduction To Big O
 
 Big O is a mathematical notation that is used to describe the computational complexity of an algorithm. The computational complexity is divided into two parts:
+
     - **Time Complexity** - Amount of time an algorithm takes to complete as the size of the imput data grows.
     - **Space Complexity** - Amount of memory an algorithm uses as the input size increases.
 Understanding big O notation is crucial for analyzing the efficiency of algorithms and make informed decision about which algorithm to use in what context. 
@@ -9,6 +10,7 @@ Understanding big O notation is crucial for analyzing the efficiency of algorith
 Complexity is described as a limiting behavior of a function as the argument tends towards infinity. The arguments are variables that represent values that change between different inputs, which affect the algorithm. The most common variable used is 'n', which is the length of the input. 
 
 Big O notation expresses the upper bound of the growth rate of a function. Here are some common big O notations and their meanings:
+
     - **O(1) - Constant Time**: The execution time of the algorithm is constant and does not change with the size of the input data set.
     - **O(n) - Linear Time**: The execution time grows linearly with the increase in input size. 
     - **O(logn) - Logarithmic Time**: The execution time increases logarithmically with the input size. Algorithms with logarithmic time complexity are highly efficient and are often found in operations like binary search.
