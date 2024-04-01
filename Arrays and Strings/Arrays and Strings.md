@@ -39,6 +39,18 @@ Here is a brief overview of how the two pointers approach works:
 2. Use a while loop until the pointers overlap
 3. At each iteration, move the left pointer towards the right and the right pointer towards the left. 
 
+Here is the pseudocode for this concept:
+
+```
+function fn(arr):
+    left, right = 0, arr.length - 1
+
+    while left < right:
+        Perform an operation based on the problem requirement
+        left ++
+        right --
+```
+
 Using this method, we will never have a complexity more than *O(n)* for the while loop becuase the pointers start n distance away from each other and move a step closer every time. 
 
 **Move the pointers along both inputs simultaneously until all elements have been traversed**. Below is the algorithm for this idea:
@@ -47,5 +59,24 @@ Using this method, we will never have a complexity more than *O(n)* for the whil
 2. Use a while loop until one pointer reaches the end of its iterable
 3. At each iteration, increment either one of the pointers or both the pointers forward depending on the problem requirement.
 4. The while loop will stop once either one of the pointers reach the end. 
+
+Here is the pseudocode for this concept:
+```
+function fn(arr1, arr2):
+    i = j = 0
+    while i < arr1.length AND j < arr2.length
+        Do some operation depending on the problem requirement
+        i++ or j++ or both
+
+    // To make sure both the iterables are exhausted
+    // One of the loops need to run
+    while i < arr1.length:
+        Do some operation depending on the problem requirement
+        i++
+
+    While j < arr2.length:
+        Do some operation depending on the problem requirement
+        j++
+```
 
 This approach will have a time complexity of *O(n+m)* if the work inside the while loop is O(1), where n and m are the lengths of the arrays. At every iteration, we move at least one of the pointers and the loop ends once either one of the pointers reach the end of the iterables. Hence, the pointers cannot move more than ```n + m``` times. 
