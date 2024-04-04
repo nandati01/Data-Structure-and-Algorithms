@@ -80,3 +80,51 @@ function fn(arr1, arr2):
 ```
 
 This approach will have a time complexity of *O(n+m)* if the work inside the while loop is O(1), where n and m are the lengths of the arrays. At every iteration, we move at least one of the pointers and the loop ends once either one of the pointers reach the end of the iterables. Hence, the pointers cannot move more than ```n + m``` times. 
+
+# Subarrays
+
+Subarrays, also known as contiguous subsequence is a sequence of elements within an array that forms a contiguous portion of the original array. In other words, subarray is a slice or a subset of elements taken from the original array, in a contiguous manner, preserving the order of elements. 
+
+Given an array ```arr``` of length n, a subarray is any sequence of elements arr[i:j] where 0 <= i <= j <= n. An empty array is also considered a subarray. The starting index i is also known as the left bound and the ending index, j is referred to as the right bound. 
+
+# Sliding Window Approach
+The sliding window approach is suitable for solving problems that involve finding or optimizing properties of subarrays. Here are a  few scenarios for when this technique can be useful:
+
+1. When the problem involves finding or optimizing properties of subarrays, such as finding the longest subarray, the shortest subarray, the number of subarrays, etc.
+2. When the problem involves finding or optimizing properties of subarrays within certain constraint and condition. For example: finding a subarray with a sum greater than or equal to 48. Another example could be finding the longest subarray with the sum of all elements less than or equal to a certain value. 
+
+## Way to Implement Sliding Window
+
+The sliding window only considers valid subarrays - subarrays that satisfy the problem constraint. We initialize two pointers for the sliding window - the left bound of the subarray and the right bound of it. Initially, both the left and the right are at the first index of the array. As long as the right pointer is within the bounds of the array, we increment the right pointer, which is we add more elements to the window. If the window does not satisfy the problem constraint, we move the left pointer forward, shrinking the window. If the subarray or the window is valid, then we only increment the right pointer. 
+
+**For Example**: Given an array, arr, and a target sum, k, find the longest subarray whose sum is smaller than or equal to k. Let ```arr = [2, 4, 3, 7, 6, 2, 1, 3]``` and ```k = 7```.
+
+Here is a breakdown of how the algorithm will work:
+
+1. Initially, ```left = right = 0```. Our window will have ```[2]```
+2. ```left = 0```, ```right = 1```. Our window will have ```[2, 4]``` and it is still valid
+3. ```left = 0```, ```right = 2```. Window: ```[2, 4, 3]``` and it's invalid
+4. ```left = 1```, ```right = 3```. Window: ```[4, 3, 7]``` and it's invalid
+5. ```left = 2```, ```right = 4```. Window: ```[3, 7, 6]``` and it's invalid
+6. ```left = 3```, ```right = 5```. Window: ```[7, 6, 2]``` and it's invalid
+7. ```left = 4```, ```right = 6```. Window: ```[6, 2, 1]``` and it's invalid
+8. ```left = 5```, ```right = 7```. Window: ```[2, 1, 3]``` and it's valid
+
+Here is a pseudocode for this algorithm:
+```
+function fn(arr, k):
+    left = right = 0
+    window_sum = 0
+    max_length = 0
+    for right in range(arr.length):
+        window_sum += arr[right]
+
+        while window_sum > k:
+            window_sum -= arr[left]
+            left += 1
+        max_length = max(max_length, right - left + 1)
+
+    return max_length
+```
+
+If the array has a length of n, it can have an empty array as its subarray, it can have n subarrays of length 1, n-1 subarrays of length 2, n-2 subarrays of length 3, ... and 1 array of length n. Therefore, there are ```(n^2 + n)/2``` subarrays. Because we are using two pointers, and both the pointers can only move n times, the time complexity for this approach will be O(2n), if the logic can be performed in O(1). 
