@@ -128,3 +128,31 @@ function fn(arr, k):
 ```
 
 If the array has a length of n, it can have an empty array as its subarray, it can have n subarrays of length 1, n-1 subarrays of length 2, n-2 subarrays of length 3, ... and 1 array of length n. Therefore, there are ```(n^2 + n)/2``` subarrays. Because we are using two pointers, and both the pointers can only move n times, the time complexity for this approach will be O(2n), if the logic can be performed in O(1). 
+
+# Prefix Sum
+
+Prefix sum is a technique that is used on an array of numbers to compute the sum of elements within a range of subarray. The prefix sum of an array ```nums``` of length ```n``` is a new array ```prefix``` of length ```n + 1```, where ```prefix[i]``` represents cthe sum of all elements up to the index ```i```. 
+
+```
+nums = [a0, a1, a2, ... an-1]
+prefix[0] = [0]
+prefix[1] = [a0]
+prefix[2] = [a0 + a1]
+prefix[3] = [a0 + a1 + a2]
+
+prefix[i] = [a0 + a1 + a2 + ... ai-1]
+```
+
+The main advantage of using prefix sum is that once they are computed, the sum of any subarray can be found in a constant time of *O(1)*. The sum of subarray from i to j (inclusive) can be found by subtracting prefix[i-1] by prefix[j]. That is, ```prefix[j] - prefix[i-1]```, where prefix[i-1] is the sum of all elements before index i. When you subtract ```i - 1``` from the sum of all elements up to index ```j```, you get the sum of all elements starting at index ```i``` and ending at index ```j```. If we don't want to deal with the out of bounds case when i = 0, the answer would be ```prefix[j] - prefix[i] + nums[i]```.
+
+Here is the pseudocode:
+```
+function compute_prefix(nums):
+    #Start the prefix with the first element
+    prefix = [nums[0]]
+    #iterate starting with i = 1
+    for (int i = 1; i < nums.length; i++):
+        prefix.append(nums[i] + prefix[prefix.length - 1])
+```
+
+Prefix sums can be computed in linear time *O(n)*. 
