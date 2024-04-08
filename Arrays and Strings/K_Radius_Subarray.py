@@ -7,19 +7,27 @@ def get_averages(nums, k):
     If there are less than k elements before or after the index i
     then k-radius average is -1
     """
+    #if the radius is 0, return the array
+    if k == 0:
+        return nums
+    #finding the prefix sum
     prefix = []
+    n = len(nums)
     sums = 0
     for num in nums:
         sums += num
         prefix.append(sums)
-    avgs = []
-    for i in range(len(prefix)):
+    #initializing the average with all -1s
+    avgs = [-1]*n
+    denom = 2 * k + 1 #total number of elements in the subarray
+    #if window size is larger than the array, return -1
+    if denom > n:
+        return avgs
+    for i in range(n):
         start = i - k
         end = i + k
-        if start >= 0 and end < len(prefix) :
-            avgs.append((prefix[end] - prefix[start] + nums[start])//(2 * k + 1))
-        else:
-            avgs.append(-1)
+        if start >= 0 and end < n:
+            avgs[i] = (prefix[end] - prefix[start] + nums[start])//denom
     return avgs
 
 test_cases = [
