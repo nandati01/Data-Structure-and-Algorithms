@@ -156,3 +156,25 @@ function compute_prefix(nums):
 ```
 
 Prefix sums can be computed in linear time *O(n)*. 
+
+# O(n) String Building
+Strings are immutable. Concatenating a single character to a small string would not be a problem, but if the string had over a million characters, and we wanted to add a single character, all of the character need to be copied to a new string. The time complexity would be O(n).
+
+Say we had a problem where we had to build the string one character at a time, then the time complexity would be O(n^2) because the operations needed at each step would be ```1 + 2 + 3 + .... + n```.
+
+Here's a way to build a string in O(n) time:
+
+```python
+parts = []
+for part in string:
+    parts.append(part) #This will cost O(1) per operation
+result = "".join(parts) #This will cost O(n)
+```
+
+If we add n characters to the list ```parts```, then the cost for the for loop would be O(n). So, in total, the total complexity would be O(n + n) = O(2n) = O(n).
+
+# Subsequence
+A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements. For a string of size n, there can be 2^n subsequences. For example: for the word "hello", some of the subsequences include: "hlo", "elo", "hello" itself, and "". 
+
+# Subsets
+The concept of a subset slightly adapts to fit the nature of ordered sequences of elements, sometimes being used interchangably with the concept of subsequences. Subset refers to any selection of elements from the string or the array, without regard to its order. This usage is more aligned with the mathematical concept of subsets, where the arrangement of elements in the subset doesn't matter. In a strict sense, arrays and strings are ordered subsequences, and selecting elements from them while preserving their order leads to subsequences, not subsets. For example, the subset of [1, 2, 3, 4] can be [1], [4, 2], [3, 1, 2]. 
