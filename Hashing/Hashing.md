@@ -37,3 +37,6 @@ Sets are data structure similar to hash tables. It also hashes keys into integer
 
 Sets don't track frequency. If you have a set and add the same element 100 times, the first operation will add, but the next 99 would do nothing.
 
+## Checking for Existence
+
+One of the most common applications of a hash table or a set is to see if an element exists or not in O(1). Since an array needs O(n) time to do this, using a hash map can improve the complexity from O(n^2) to O(n). 
