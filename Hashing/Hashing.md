@@ -40,3 +40,7 @@ Sets don't track frequency. If you have a set and add the same element 100 times
 ## Checking for Existence
 
 One of the most common applications of a hash table or a set is to see if an element exists or not in O(1). Since an array needs O(n) time to do this, using a hash map can improve the complexity from O(n^2) to O(n). 
+
+## Counting
+
+Counting is a very common pattern in hash maps. By "counting", we are referring to tracking the frequency of things. When looking at sliding windows, some problems had constraint as limiting the amount of a certain element in the window. For example, finding the longest substring with at most k 0s. In those problems, we used an integer varraible "curr_window" since we only cared about 0. A hash map opens the door to solving problems where the constraint involves multiple elements. 
