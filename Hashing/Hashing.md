@@ -44,3 +44,5 @@ One of the most common applications of a hash table or a set is to see if an ele
 ## Counting
 
 Counting is a very common pattern in hash maps. By "counting", we are referring to tracking the frequency of things. When looking at sliding windows, some problems had constraint as limiting the amount of a certain element in the window. For example, finding the longest substring with at most k 0s. In those problems, we used an integer varraible "curr_window" since we only cared about 0. A hash map opens the door to solving problems where the constraint involves multiple elements. 
+
+Another common pattern for sliding windows is finding the number of subarrays or substrings that fit an exact constraint. For example, finding the number of subarrays that have a sum exactly equal to k. To better understand this concept, first lets recall the concept of prefix sum. With a prefix sum, we can find the sum of subbarrays by taking the difference between two prefix sums. To find subarrays that have a sum exactly equal to k, first find the prefix sums of the input array. Any difference in the prefix sum equal to k gives a subarray with sum equal to k. 
