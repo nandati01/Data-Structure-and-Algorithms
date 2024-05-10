@@ -4,7 +4,7 @@ def min_card_pickup(cards):
     Given an integer array cards
     Return the length of the shortest subarray that contains at least one duplicates
     For example: cards = [1, 2, 6, 2, 1] -> {1: [0, 4], 2: [1, 3], 6: [2]}
-    Return 2
+    Return 3
     """
     count = defaultdict(list)
     for i, card in enumerate(cards):
